@@ -34,7 +34,7 @@ class ApplicationController < Sinatra::Base
 
   get "/restaurants/:id/ratings" do
     restaurant = Restaurant.find(params[:id])
-    restaurant.to_json(only: [:id, :name], include: :ratings)
+    restaurant.to_json(include: :ratings)
   end
 
   get "/ratings" do
