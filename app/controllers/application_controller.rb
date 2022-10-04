@@ -26,10 +26,18 @@ class ApplicationController < Sinatra::Base
     deliveries.to_json
   end
 
-  #GET a specific delivery service from its id
+  #GET a specific delivery service's restaurants
 
-  get "/delivery/:id" do
-    delivery = Delivery.find(params[:id])
+  get "/delivery/:id/restaurants" do
+    delivery_service = Delivery.find(params[:id])
+    delivery = delivery_service.restaurants
+    delivery.to_json
+  end
+
+  #GET a specific delivery service from its name
+
+  get "/delivery/:name" do
+    delivery = Delivery.find(params[:name])
     delivery.to_json
   end
 
@@ -69,6 +77,13 @@ class ApplicationController < Sinatra::Base
 
   get "/ratings" do
     ratings = Rating.all
+    ratings.to_json
+  end
+
+  #GET a specific rating for a specific restaurant from its id
+
+  get "/ratings/:id" do
+    ratings = Rating.find(params[:id])
     ratings.to_json
   end
 end
