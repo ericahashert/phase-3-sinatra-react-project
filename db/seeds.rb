@@ -73,6 +73,15 @@ restaurants_array4 = [
     r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r30, r31, r32, r33, r34, r35, r36, r37, r38, r39, r40, r41, r42, r43, r44, r45, r46, r47, r48
 ]
 
+restaurants_array5 = [
+    r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r30, r31, r32, r33, r34, r35, r36, r37, r38, r39, r40, r41, r42, r43, r44, r45, r46, r47, r48
+]
+
+restaurants_array6 = [
+    r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r30, r31, r32, r33, r34, r35, r36, r37, r38, r39, r40, r41, r42, r43, r44, r45, r46, r47, r48
+]
+
+
 puts "✅ Done with restaurants!"
 
 48.times do
@@ -86,19 +95,24 @@ end
 puts "✅ Done with ratings!"
 
 food_array = []
-48.times do
+food_array2 = []
+food_array3 = []
+144.times do
+    puts "food"
     d1 = Dish.create(name: Faker::Food.dish, ingredients: Faker::Food.description, vegetarian?: rand(0..1), appetizer?: rand(0..1), entree?: rand(0..1), sides?: rand(0..1), dessert?: 0, drinks?: 0, image_url: Faker::LoremFlickr.image(size: "300x400", search_terms: ['food', 'meal']))
     food_array << d1
+    food_array2 << d1
+    food_array3 << d1
 end
 
 drink_array = []
-12.times do
+48.times do
     d1 = Dish.create(name: Faker::Beer.name, ingredients: Faker::Beer.style, vegetarian?: 0, appetizer?: rand(0..1), entree?: 0, sides?: 0, dessert?: 0, drinks?: 1, image_url: Faker::LoremFlickr.image(size: "300x400", search_terms: ['beverage', 'liquid']))
     drink_array << d1
 end
 
 dessert_array = []
-12.times do
+48.times do
     d1 = Dish.create(name: Faker::Dessert.variety, ingredients: Faker::Dessert.topping, vegetarian?: 0, appetizer?: rand(0..1), entree?: 0, sides?: 0, dessert?: 1, drinks?: 0, image_url: Faker::LoremFlickr.image(size: "300x400", search_terms: ['dessert']))
     dessert_array << d1
 end
@@ -113,7 +127,23 @@ puts "✅ Done with dishes!"
     restaurants_array.delete(restaurant)
 end
 
-12.times do
+48.times do
+    restaurant = restaurants_array6.sample
+    food = food_array2.first
+    Middle.create(dish_id: food.id, restaurant_id: restaurant.id)
+    food_array2.delete(food)
+    restaurants_array6.delete(restaurant)
+end
+
+48.times do
+    restaurant = restaurants_array5.sample
+    food = food_array3.first
+    Middle.create(dish_id: food.id, restaurant_id: restaurant.id)
+    food_array3.delete(food)
+    restaurants_array5.delete(restaurant)
+end
+
+48.times do
     restaurant = restaurants_array3.sample
     drink = drink_array.first
     puts drink.id
@@ -122,7 +152,7 @@ end
     restaurants_array3.delete(restaurant)
 end
 
-12.times do
+48.times do
     restaurant = restaurants_array4.sample
     dessert = dessert_array.first
     Middle.create(dish_id: dessert.id, restaurant_id: restaurant.id)
