@@ -99,7 +99,7 @@ food_array2 = []
 food_array3 = []
 144.times do
     puts "food"
-    d1 = Dish.create(name: Faker::Food.dish, ingredients: Faker::Food.description, vegetarian?: rand(0..1), appetizer?: rand(0..1), entree?: rand(0..1), sides?: rand(0..1), dessert?: 0, drinks?: 0, image_url: Faker::LoremFlickr.image(size: "300x400", search_terms: ['food', 'meal']))
+    d1 = Dish.create(name: Faker::Food.dish, ingredients: Faker::Food.description, vegetarian?: rand(0..1), appetizer?: rand(0..1), entree?: rand(0..1), sides?: rand(0..1), dessert?: 0, drinks?: 0, image_url: Faker::LoremFlickr.image(size: "300x400", search_terms: ['food', 'meal']), price: rand(0..15))
     food_array << d1
     food_array2 << d1
     food_array3 << d1
@@ -107,13 +107,13 @@ end
 
 drink_array = []
 48.times do
-    d1 = Dish.create(name: Faker::Beer.name, ingredients: Faker::Beer.style, vegetarian?: 0, appetizer?: rand(0..1), entree?: 0, sides?: 0, dessert?: 0, drinks?: 1, image_url: Faker::LoremFlickr.image(size: "300x400", search_terms: ['beverage', 'liquid']))
+    d1 = Dish.create(name: Faker::Beer.name, ingredients: Faker::Beer.style, vegetarian?: 0, appetizer?: rand(0..1), entree?: 0, sides?: 0, dessert?: 0, drinks?: 1, image_url: Faker::LoremFlickr.image(size: "300x400", search_terms: ['beverage', 'liquid']), price: rand(0..15))
     drink_array << d1
 end
 
 dessert_array = []
 48.times do
-    d1 = Dish.create(name: Faker::Dessert.variety, ingredients: Faker::Dessert.topping, vegetarian?: 0, appetizer?: rand(0..1), entree?: 0, sides?: 0, dessert?: 1, drinks?: 0, image_url: Faker::LoremFlickr.image(size: "300x400", search_terms: ['dessert']))
+    d1 = Dish.create(name: Faker::Dessert.variety, ingredients: Faker::Dessert.topping, vegetarian?: 0, appetizer?: rand(0..1), entree?: 0, sides?: 0, dessert?: 1, drinks?: 0, image_url: Faker::LoremFlickr.image(size: "300x400", search_terms: ['dessert']), price: rand(0..15))
     dessert_array << d1
 end
 

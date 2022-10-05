@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_03_194701) do
+ActiveRecord::Schema.define(version: 2022_10_05_201108) do
 
   create_table "deliveries", force: :cascade do |t|
     t.string "name"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2022_10_03_194701) do
     t.boolean "dessert?"
     t.boolean "drinks?"
     t.string "image_url"
+    t.string "price"
   end
 
   create_table "middles", force: :cascade do |t|
