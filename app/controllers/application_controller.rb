@@ -53,7 +53,7 @@ class ApplicationController < Sinatra::Base
 
   get "/delivery/:id/restaurants" do
     restaurants = Delivery.find(params[:id]).restaurants
-    restaurants.to_json(include: :reviews)
+    restaurants.to_json
   end
 
   #RESTAURANTS
